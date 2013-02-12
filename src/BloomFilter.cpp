@@ -79,7 +79,11 @@ void BloomFilter::dump() {
 
 void BloomFilter::add(const Key& key) {
     countAdd++;
-    ////////////// Write your code below  ////////////////////////
+    unsigned long hash_out_1 = hash1(key);
+    unsigned long hash_out_2 = hash2(key);
+    unsigned long hash_at_1 = m_tickBook.at(hash_out_1);
+    unsigned long hash_at_2 = m_tickBook.at(hash_out_1);
+    m_tickBook.at(hash_at_1);
 
 
 
@@ -95,7 +99,12 @@ void BloomFilter::add(const Key& key) {
 bool BloomFilter::exist(const Key& key) {
     countFind++;
     ////////////// Write your code below  ////////////////////////
+    unsigned long hash_out_1 = hash1(key);
+    unsigned long hash_out_2 = hash2(key);
 
+    if (m_tickBook.at(hash_out_1) == 1) {
+    	return true;
+    }
 
     return false; //you have to replace this line with your own.
 }
@@ -108,7 +117,8 @@ bool BloomFilter::exist(const Key& key) {
 void BloomFilter::del(const Key& key) {
     countDelete++;
     ////////////// Write your code below  ////////////////////////
-
+    unsigned long hash_out_1 = hash1(key);
+    unsigned long hash_out_2 = hash2(key);
 
 }
 
